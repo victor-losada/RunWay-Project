@@ -1,0 +1,18 @@
+USUARIOS
+
+ADMINISTRADOR:
+
+administrador@gmail.com
+administrador
+
+Negocio:
+
+negocio@gmail.com
+negocio
+
+Domiciliarios:
+
+domiciliario1@gmail.com
+domiciliario1
+
+(el domiciliario2 es igual solo que  cambia los numeros)
