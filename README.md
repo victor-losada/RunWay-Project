@@ -1,47 +1,47 @@
-Introducción:
+Introduction:
 
-Runway Domicilios es una aplicación que permite gestionar pedidos de manera eficiente. Esta documentación te guiará a través del proceso de instalación y uso de la aplicación en sistemas operativos Linux y Windows.
+Runway Domicilios is an application that allows for efficient order management. This documentation will guide you through the installation and usage process of the application on Linux and Windows operating systems.
 
-Requisitos Previos:
-* Node.js: Necesario para ejecutar la aplicación.
-* Git: Para clonar el repositorio.
-* MySQL: Para que la aplicación funcione correctamente, necesitas tener MySQL instalado y configurado.
-* Laragon (opcional): Laragon es un entorno de desarrollo local que facilita la instalación y gestión de aplicaciones web
+Prerequisites:
+* Node.js: Required to run the application.
+* Git: To clone the repository.
+* MySQL: For the application to work correctly, you need to have MySQL installed and configured.
+* Laragon (optional): Laragon is a local development environment that simplifies the installation and management of web applications.
 
-Clonación del Repositorio:
+Cloning the Repository:
 
-Abre una terminal (ya sea sistema en Windows o Linux) y ejecuta el siguiente comando para clonar el repositorio:
+Open a terminal (either on Windows or Linux) and execute the following command to clone the repository.:
 git clone https://github.com/victor-losada/RunWay-Project.git
 
-Instalación de Dependencias
-* Navega al directorio del proyecto tanto el frontend(FRONTEND) como el backend(Runwaydomicilios):
-cd Runwaydomicilios o FRONTEND
+Installation of Dependencies
+* Navigate to the project directory for both the frontend (FRONTEND) and the backend (Runwaydomicilios):
+cd Runwaydomicilios or FRONTEND
 
-* Instala las dependencias necesarias ejecutando:
+* Install the necessary dependencies by running:
 npm install
 
-IMPORTA LA BASE DE DATOS "runway.." EN TU MAQUINA
+IMPORT THE "runway.." DATABASE ON YOUR MACHINE
 
-Configuración de la Base de Datos:
+Database Configuration:
 
-Antes de ejecutar la aplicación, es necesario configurar algunas variables de entorno. Ingresa al archivo .env en la raíz del proyecto (Runwaydomicilios) y añade las siguientes líneas:
+Before running the application, it is necessary to configure some environment variables. Open the .env file at the root of the project (Runwaydomicilios) and add the following lines:
 
 DB_HOST=localhost
 
-DB_USER=tu_usuario
+DB_USER=you_user
 
-DB_PASSWORD=tu_contraseña
+DB_PASSWORD=you_password
 
-DB_NAME=nombre_de_tu_base_de_datos
+DB_NAME=name_database
 
-CONFIGURACION FRONTEND - variables de entorno 
+FRONTEND CONFIGURATION - environment variables
 
-* luego de tener configurada la base de datos en el backend nos dirigimos al frontend al archivo "config.js" que se encuentra en la carperta SRC.
-* Ahi lo que hacemos es cambiar el API_HOST por la direccion ip local que tenemos en el dispositivo.
-   Nota: Asegúrate de que la dirección IP y el puerto sean correctos y accesibles desde tu dispositivo. Si no encuentras o no sabes cual direccion ip se habla simplemente pon a correr el frontend con el siguiente codigo:
-npm run dev -- --host o npm run dev
+* After setting up the database in the backend, we head to the frontend to the "config.js" file located in the SRC folder.
+* There, what we do is change the API_HOST to the local IP address we have on the device.
+   Note: Make sure that the IP address and port are correct and accessible from your device. If you can't find or don't know which IP address is being referred to, simply run the frontend with the following command:
+npm run dev -- --host or npm run dev
 
-AHI LO QUE TE SALE VA SER ALGO PARECIDO A ESTO:
+WHAT YOU WILL SEE WILL BE SOMETHING LIKE THIS:
 
   VITE v5.4.10  ready in 951 ms
 
@@ -51,16 +51,16 @@ AHI LO QUE TE SALE VA SER ALGO PARECIDO A ESTO:
   
   ➜  press h + enter to show help
   
-y donde dice Network se copia y pega en las variables unicamente la ip. en este caso la ip seria: 192.168.100.6
+and where it says Network, only the IP is copied and pasted into the variables. In this case, the IP would be: 192.168.100.6
 
-¿POR QUE SE HACE ESTO?
+WHY IS THIS DONE?
 
-El sitema esta diseñado tanto para que sirva en computador como en celular tambien. tener encuenta que no es un software desplegado en algun servidor o nube por lo cual para que en dado caso el sistema se piense porbar en algun dispositivo movil o computador unicamente por medio de url, el backend y frontend debe estar corriendo en la maquina local. Y como dato importante, para que funcione en varios dispositivos, todos deben estar conectados a la misma red wifi de la maquina local.
+The system is designed to work on both computers and mobiles. Keep in mind that it is not software deployed on any server or cloud, so if the system is to be tested on any mobile device or computer solely via URL, both the backend and frontend must be running on the local machine. And as an important point, for it to work on multiple devices, all must be connected to the same Wi-Fi network of the local machine.
 
-CONFIGURACION NOTIFICACIONES (socket.io)
+NOTIFICATION CONFIGURATION (socket.io)
 
-* Una vez completado lo anterior nos dirigimos ahi mismo en el frontend a una carpeta llamada "context" que dentro de ella tiene un archivo de configuracion para las notificaciones(SocketContext)
-* una vez ahi adentro vamos a modificar la url que comunica las notificaciones de el backend con el mismo frontend:
+* Once the above is completed, we go to a folder in the frontend called "context," which contains a configuration file for notifications (SocketContext).
+* Once inside, we will modify the URL that connects the notifications from the backend to the frontend:
  useEffect(() => {
 
     if (auth?.user) {
@@ -73,13 +73,13 @@ CONFIGURACION NOTIFICACIONES (socket.io)
   
       });
   
-* ahi hacemos lo mismo que el paso anterior, cambiamos la ip☝️.
-* 
-  - Nota: se conserva el 3000. A no ser que en el backend hayas cambiado el puerto por cualquier otro
-    
-Ejecución de la Aplicación
-
-- por ultimo una vez teniendo corriendo el frontend bien, nos dirigimos al backend al archivo "index.js" en la raiz del backend. y vamos a moficar el cors  del sockect:
+* Here we do the same as the previous step, we change the IP☝️.  
+*  
+  - Note: 3000 is kept. Unless you have changed the port in the backend to any other one. 
+  
+Running the Application  
+  
+- Finally, once the frontend is running well, we head to the backend to the "index.js" file in the root of the backend, and we will modify the CORS of the socket.:
   
   const io = new SocketIOServer(server, {
   
@@ -94,50 +94,48 @@ Ejecución de la Aplicación
   
 });
 
-* cambiamos la url origin por la dada en la terminal donde estamos corroiendo el frontend☝️
+* We change the origin URL to the one given in the terminal where we are running the frontend☝️
 
-Uso de la Aplicación
+Application Usage
 
-* Una vez que la aplicación esté configurada, ejecuta el backend (estando corriendo el frontend) con el siguiente codigo:
+* Once the application is configured, run the backend (with the frontend running) using the following code:
 npm run dev
 
-* puedes acceder a ella a través de tu navegador web. Simplemente ingresa la URL  http://localhost:5173/ en caso de unicamente porbar el software de forma local. ya que lo quieras probar en otros dispositivos con otras personas..ingresas la segunda url. ejemplo:
+* You can access it through your web browser. Just enter the URL http://localhost:5173/ if you only want to test the software locally. If you want to try it on other devices with other people, enter the second URL. For example:
   
 Network: http://192.168.100.6:5173/
 
-* NOTA IMPORTANTE *
-para empezar a probar el sistema, ya la base de datos trae Uno o varios usuarios(u usuarui por rol) y los daros de logueo de cada usuario viene en el archivo USUARIOS.txt de este repositorio
-
+* IMPORTANT NOTE *
+To start testing the system, the database already has one or more users (or users by role), and the login details for each user can be found in the USUARIOS.txt file of this repository.
 
 LINUX
 
-Consideraciones para Linux
+Considerations for Linux
 
-Si estás utilizando Linux, asegúrate de que:
+If you are using Linux, make sure that:
 
-* Tienes permisos para abrir los puertos necesarios (3000 y 5173).
+* You have permissions to open the necessary ports (3000 and 5173).
   
-* El firewall no esté bloqueando las conexiones. Puedes usar ufw para permitir el tráfico:
+* The firewall is not blocking the connections. You can use ufw to allow traffic:
 
 - sudo ufw allow 3000
   
 - sudo ufw allow 5173
 
-tambien asegurate de que tu sistema este actualizado. abre una terminal y ejecuta los siguientes comandos:
+Also, make sure your system is updated. Open a terminal and run the following commands:
 
 - sudo apt-get update
   
 - sudo apt-get upgrade
 
-En linux despues de verificar lo anterior , ya puedes seguir configurando y desplegando el proyecto de la misma manera como se nombra al inicio
+On Linux, after verifying the above, you can continue configuring and deploying the project in the same way as mentioned at the beginning.
 
+Troubleshooting
 
-Solución de Problemas
-
-* Si encuentras problemas al ejecutar la aplicación, verifica lo siguiente:
+* If you encounter problems when running the application, check the following:
   
-* Asegúrate de que Node.js y npm estén correctamente instalados.
+* Make sure that Node.js and npm are properly installed.
   
-* Verifica que las variables de entorno estén configuradas correctamente.
+* Verify that the environment variables are correctly configured.
   
-* Revisa la consola de la terminal para ver si hay mensajes de error.
+* Check the terminal console for any error messages.
